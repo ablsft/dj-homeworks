@@ -18,7 +18,7 @@ DATA = {
     },
     # можете добавить свои рецепты ;)
 }
-
+0
 # Напишите ваш обработчик. Используйте DATA как источник данных
 # Результат - render(request, 'calculator/index.html', context)
 # В качестве контекста должен быть передан словарь с рецептом:
@@ -28,3 +28,23 @@ DATA = {
 #     'ингредиент2': количество2,
 #   }
 # }
+
+def recipe(request, dish):
+    recipe = DATA.get(dish)
+    servings = int(request.GET.get('servings', default=1))
+
+    recipe_mod = {}
+    for ingredient, quantity in recipe.items():
+        quantity_mod = servings * float(quantity)
+        if quantity_mod == int(quantity_mod):
+            quantity_mod = int(quantity_mod)
+        else:
+            quantity_mod = round(quantity_mod, 2)
+
+        recipe_mod[ingredient] = quantity_mod
+
+    context = {
+        'recipe': recipe_mod
+    }
+
+    return render(request, 'calculator/index.html', context)
