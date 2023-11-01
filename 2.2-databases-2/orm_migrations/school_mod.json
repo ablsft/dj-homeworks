@@ -1,0 +1,130 @@
+[
+{
+	"model": "school.teacher",
+	"pk": 1, 
+	"fields": {
+		"name": "Карякин Владимир Владимирович", 
+		"subject": "Математика"
+	}
+}, 
+{
+	"model": "school.teacher", 
+	"pk": 2, 
+	"fields": {
+		"name": "Наумкин Анатолий Андреевич", 
+		"subject": "Рус яз"
+	}
+}, 
+{
+	"model": "school.teacher", 
+	"pk": 3, 
+	"fields": {
+		"name": "Филатова Елена Александровна", 
+		"subject": "Физика"
+	}
+}, 
+{
+	"model": "school.teacher", 
+	"pk": 4, 
+	"fields": {
+		"name": "Просвирнина Марина Фёдоровна", 
+		"subject": "Англ яз"
+	}
+}, 
+{
+	"model": "school.teacher", 
+	"pk": 5, 
+	"fields": {
+		"name": "Золотухин Вячеслав Игоревич", 
+		"subject": "ИЗО"
+	}
+}, 
+{
+	"model": "school.teacher",
+	"pk": 6, 
+	"fields": {
+		"name": "Прохоров Геннадий Борисович", 
+		"subject": "Физ-ра"
+	}
+}, 
+{
+	"model": "school.teacher", 
+	"pk": 7, 
+	"fields": {
+		"name": "Ведерникова Эмма Павловна", 
+		"subject": "Химия"
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 1, 
+	"fields": {
+		"name": "Бабаева Вера Ивановна", 
+		"group": "8А", 
+		"teachers": [1]
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 2, 
+	"fields": {
+		"name": "Погорелов Денис Витальевич", 
+		"group": "8А", 
+		"teachers": [3]
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 3, 
+	"fields": {
+		"name": "Осипов Иван Вячеславович", 
+		"group": "8Б", 
+		"teachers": [1, 3]
+	}
+},
+{
+	"model": "school.student", 
+	"pk": 4, 
+	"fields": {
+		"name": "Зарипов Константин Валерьевич", 
+		"group": "8Б", 
+		"teachers": [5, 7]
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 5, 
+	"fields": {
+		"name": "Ланская Кристина Эдуардовна", 
+		"group": "8А", 
+		"teachers": [2, 4]
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 6, 
+	"fields": {
+		"name": "Поздняков Ефим Власович", 
+		"group": "8А", 
+		"teachers": [1, 6]
+	}
+}, 
+{
+	"model": "school.student", 
+	"pk": 7, 
+	"fields": {
+		"name": "Деркач Мария Александровна", 
+		"group": "8Б", 
+		"teachers": [2, 4, 5]
+	}
+},
+{
+	"model": "school.student", 
+	"pk": 8, 
+	"fields": {
+		"name": "Прудиус Павел Михайлович",
+		"group": "8Б", 
+		"teachers": [3, 7]
+	}
+}
+]
