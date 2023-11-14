@@ -41,5 +41,50 @@ Content-Type: application/json
 ###
 
 # получение информации по датчику
-GET {{baseUrl}}/sensors/1/
+GET {{baseUrl}}/sensors/5/
+Content-Type: application/json
+
+###
+
+POST {{baseUrl}}/sensors/
+Content-Type: application/json
+
+{
+  "name": "Arduino Nano",
+  "description": "Датчик в оранжерее"
+}
+
+###
+
+POST {{baseUrl}}/sensors/
+Content-Type: application/json
+
+{
+  "name": "ESP8266",
+  "description": "Датчик в коридоре"
+}
+
+###
+
+POST {{baseUrl}}/measurements/
+Content-Type: application/json
+
+{
+  "sensor": 2,
+  "temperature": 25.4
+}
+
+###
+
+POST {{baseUrl}}/measurements/
+Content-Type: application/json
+
+{
+  "sensor": 1,
+  "temperature": 19.5
+}
+
+###
+
+GET {{baseUrl}}/sensors/2/
 Content-Type: application/json
