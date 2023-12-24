@@ -26,11 +26,11 @@ def students_factory():
 def test_course_retrieve(client, courses_factory):
     course = courses_factory()
     
-    response = client.get('/api/v1/courses/')
+    response = client.get(f'/api/v1/courses/{course.pk}/')
 
     assert response.status_code == 200
     data = response.json()
-    assert data[0]['name'] == course.name
+    assert data['name'] == course.name
 
 @pytest.mark.django_db
 def test_courses_list(client, courses_factory):
@@ -102,9 +102,10 @@ def test_course_delete(client, courses_factory):
     assert response_get.status_code == 404
 
 @pytest.mark.django_db
-@pytest.mark.parametrize('students_quantity', [20, 21])
-def test_students_add(client, students_factory,
-                      students_quantity, courses_factory):
+@pytest.mark.parametrize('students_quantity, code_post, code_patch', 
+                         [(20, 201, 200), (21, 400, 400)])
+def test_students_add(client, students_factory, students_quantity, 
+                      code_post, code_patch, courses_factory):
     course = courses_factory()
     students = students_factory(_quantity=students_quantity)
 
@@ -114,11 +115,11 @@ def test_students_add(client, students_factory,
     response_patch = client.patch(f'/api/v1/courses/{course.pk}/', data={
                             'students': [student.id for student in students]})
 
-    assert response_post.status_code == 201
-    assert response_patch.status_code == 200
+    assert response_post.status_code == code_post
+    assert response_patch.status_code == code_patch
 
-@pytest.mark.parametrize('students_quantity', [20, 21])
-def test_students_add_no_factory(students_quantity, settings):
+@pytest.mark.parametrize('students_quantity, condition', [(20, True), (21, False)])
+def test_students_add_no_factory(students_quantity, condition, settings):
     max_number = settings.MAX_STUDENTS_PER_COURSE
 
-    assert students_quantity <= max_number
+    assert (students_quantity <= max_number) == condition
